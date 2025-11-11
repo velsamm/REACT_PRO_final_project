@@ -8,12 +8,13 @@ import { CartCounter } from '@entities/CartCounter';
 import { Button } from '@shared/ui/Button';
 import { Price } from '@shared/ui/Price';
 import s from './Card.module.css';
+import { memo } from 'react';
 
 type CardProps = {
 	product: Product;
 };
 
-export const Card = ({ product }: CardProps) => {
+const CardComponent = ({ product }: CardProps) => {
 	const { discount, price, name, tags, id, images } = product;
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
 	const isProductInCart = cartProducts.some((p) => p.id === id);
@@ -70,3 +71,5 @@ export const Card = ({ product }: CardProps) => {
 		</article>
 	);
 };
+
+export const Card = memo(CardComponent);

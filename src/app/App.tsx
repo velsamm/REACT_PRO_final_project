@@ -3,9 +3,10 @@ import './styles/styles.css';
 import { Outlet } from 'react-router-dom';
 import { Header } from '../widgets/Header';
 import { Sort } from '../shared/ui/Sort';
-import { Footer } from '../widgets/Footer';
+// import { Footer } from '@widgets/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Footer } from '@widgets/Footer';
 
 export const App = () => {
 	return (

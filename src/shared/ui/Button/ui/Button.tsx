@@ -1,6 +1,8 @@
-import React, { type FC } from 'react';
+import React, { memo, type FC } from 'react';
 import MuiButton, { ButtonProps } from '@mui/material/Button';
 
-export const Button: FC<ButtonProps> = (props) => (
+export const ButtonComponent: FC<ButtonProps> = (props) => (
 	<MuiButton {...props}></MuiButton>
 );
+
+export const Button = memo(ButtonComponent);

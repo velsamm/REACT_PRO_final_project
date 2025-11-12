@@ -8,7 +8,7 @@ import { CartCounter } from '@entities/CartCounter';
 import { Button } from '@shared/ui/Button';
 import { Price } from '@shared/ui/Price';
 import s from './Card.module.css';
-import { memo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 
 type CardProps = {
 	product: Product;
@@ -17,8 +17,12 @@ type CardProps = {
 const CardComponent = ({ product }: CardProps) => {
 	const { discount, price, name, tags, id, images } = product;
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
-	const isProductInCart = cartProducts.some((p) => p.id === id);
+	const isProductInCart = useMemo(() => cartProducts.some((p) => p.id === id), [cartProducts]);
 	const { addProductToCart } = useAddToCart();
+
+	const handleAddProductToCart = useCallback(() => {
+		addProductToCart({ ...product, count: 1 });
+	}, [product]);
 
 	return (
 		<article className={s['card']}>
@@ -58,7 +62,7 @@ const CardComponent = ({ product }: CardProps) => {
 				<CartCounter productId={id} />
 			) : (
 				<Button
-					onClick={() => addProductToCart({ ...product, count: 1 })}
+					onClick={handleAddProductToCart}
 					disabled={isProductInCart}
 					className={classNames(
 						s['card__cart'],

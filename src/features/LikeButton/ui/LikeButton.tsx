@@ -3,11 +3,12 @@ import { ReactComponent as LikeSvg } from '@shared/assets/icons/like.svg';
 import { Button } from '@shared/ui/Button';
 import { useLikeButton } from '../model/useLikeButton';
 import s from './LikeButton.module.css';
+import { memo } from 'react';
 
 type TLikeButtonProps = {
 	product: Product;
 };
-export const LikeButton = ({ product }: TLikeButtonProps) => {
+const LikeButtonComponent = ({ product }: TLikeButtonProps) => {
 	const { isLike, toggleLike } = useLikeButton(product);
 
 	return (
@@ -20,3 +21,5 @@ export const LikeButton = ({ product }: TLikeButtonProps) => {
 		</Button>
 	);
 };
+
+export const LikeButton = memo(LikeButtonComponent);

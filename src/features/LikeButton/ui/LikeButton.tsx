@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { ReactComponent as LikeSvg } from '@shared/assets/icons/like.svg';
+// import { ReactComponent as LikeSvg } from '@shared/assets/icons/like.svg';
+import LikeSvg from '@shared/assets/icons/like.svg?react';
 import { Button } from '@shared/ui/Button';
 import { useLikeButton } from '../model/useLikeButton';
 import s from './LikeButton.module.css';
@@ -16,7 +17,7 @@ const LikeButtonComponent = ({ product }: TLikeButtonProps) => {
 	const handleClick = () => {
 		addClickCounter();
 		toggleLike();
-	}
+	};
 
 	return (
 		<Button
@@ -24,6 +25,7 @@ const LikeButtonComponent = ({ product }: TLikeButtonProps) => {
 				[s['card__favorite_is-active']]: isLike,
 			})}
 			onClick={handleClick}>
+			{/* <img src={likeSvgSrc} /> */}
 			<LikeSvg />
 		</Button>
 	);

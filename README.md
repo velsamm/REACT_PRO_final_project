@@ -10,7 +10,7 @@ npm install
 Запуска в режиме разработки
 
 ```shell
-npm run start
+npm run start:vite
 ```
 
 # 1. Архитектура и структура

@@ -80,3 +80,7 @@ input:focus {
 .form__btn.maxContent {
 	width: max-content;
 }
+
+.form__btn.disabled {
+	background: gray;
+}

@@ -40,3 +40,7 @@ npm run start
 2. Сборка с помощь Vite заняла 5,18 секунд. общий размер бандла - 645кб (скриншот ViteBundleInfo.png)
 
 Вывод: Vite существенно обгоняет Webpack 5 по скорости сборки 
+
+# 6. Применение React 19 Hooks
+
+в форме создания отзыва /src/features/ReviewForm/ui/ReviewForm.tsx использован хук useActionState + форма сбрасывается после отправки данных на сервер

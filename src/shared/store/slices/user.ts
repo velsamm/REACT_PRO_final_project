@@ -30,7 +30,10 @@ export const userSlice = createSlice({
 			state.accessToken = action.payload.accessToken;
 		},
 		clearUser() {
-			return createInitState();
+			return {
+				user: null,
+				accessToken: '',
+			};
 		},
 		setUser: (state, action: PayloadAction<UserState['user']>) => {
 			state.user = action.payload;

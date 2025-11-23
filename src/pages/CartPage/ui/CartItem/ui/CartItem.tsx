@@ -1,10 +1,11 @@
-import { ReactComponent as TrashIcon } from '../../../../../shared/assets/icons/trash.svg';
+// import { ReactComponent as TrashIcon } from '@shared/assets/icons/trash.svg';
+import TrashIcon from '@shared/assets/icons/trash.svg?react';
 import { Link } from 'react-router-dom';
 import s from '../../CartPage.module.css';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../../../../../shared/store/slices/cart';
-import { CartCounter } from '../../../../../shared/ui/CartCounter';
+import { cartActions } from '@shared/store/slices/cart';
+import { CartCounter } from '@entities/CartCounter';
 
 type CartItemProps = {
 	product: CartProduct;

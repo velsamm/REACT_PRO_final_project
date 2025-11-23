@@ -9,6 +9,11 @@ module.exports = {
 		react: {
 			version: 'detect',
 		},
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
 	},
 	extends: [
 		'plugin:@typescript-eslint/recommended',
@@ -19,6 +24,7 @@ module.exports = {
 		'plugin:import/errors',
 		'plugin:import/warnings',
 		'plugin:import/typescript',
+		'plugin:import/resolver',
 		'plugin:jsx-a11y/recommended',
 		'plugin:eslint-comments/recommended',
 	],

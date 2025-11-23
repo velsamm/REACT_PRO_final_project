@@ -3,17 +3,22 @@ import classNames from 'classnames';
 
 type CartAmountProps = {
 	products: CartProduct[];
+	afterSubmit: (totalCost: number, productsAmount: number) => void;
 };
-export const CartAmount = ({ products }: CartAmountProps) => {
+
+export const CartAmount = ({ products, afterSubmit }: CartAmountProps) => {
 	const allPrice = products.reduce((acc, p) => p.price * p.count + acc, 0);
 	const allDiscount = products.reduce(
 		(acc, p) => p.discount * p.count + acc,
 		0
 	);
 
+	const totalPrice = allPrice - allDiscount;
+
 	const handleSubmitCart = () => {
 		const order = products.map((p) => ({ id: p.id, count: p.count }));
 		console.log('Отправка заказа на сервер: ', JSON.stringify(order, null, 2));
+		afterSubmit(totalPrice, products.length);
 	};
 
 	return (
@@ -46,7 +51,7 @@ export const CartAmount = ({ products }: CartAmountProps) => {
 					Общая стоимость
 				</h2>
 				<span className={classNames(s['cart-amount__total-cost-value'])}>
-					{`${allPrice - allDiscount} ₽`}
+					{`${totalPrice} ₽`}
 				</span>
 			</div>
 			<button

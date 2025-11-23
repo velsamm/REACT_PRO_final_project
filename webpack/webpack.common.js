@@ -7,6 +7,8 @@ require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
 const production = process.env.NODE_ENV === 'production';
 
+// const getPath = (pathInput) => path.resolve(__dirname, 'src');
+
 module.exports = {
 	entry: path.resolve(__dirname, '..', './src/index.tsx'), //точка входа в наше приложение содержит абсолютный путь к index.ts
 	output: {
@@ -71,6 +73,14 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'], //указываем файлы с которыми будет работать webpack
+		alias: {
+			"@app": path.resolve(__dirname, '/src/app'),
+			"@pages": path.resolve(__dirname, '/src/pages'),
+			"@shared": path.resolve(__dirname, '/src/shared'),
+			"@widgets": path.resolve(__dirname, '/src/widgets'),
+			"@features": path.resolve(__dirname, '/src/features'),
+			"@entities": path.resolve(__dirname, '/src/entities'),
+		}
 	},
 	plugins: [
 		new HTMLWebpackPlugins({

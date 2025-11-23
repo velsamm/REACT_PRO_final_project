@@ -2,10 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CartState {
 	products: CartProduct[];
+	successOrderModal: {
+		totalCost: number;
+		productsAmount: number;
+	} | null;
 }
 
 const createInitState = (): CartState => ({
 	products: [],
+	successOrderModal: null,
 });
 
 export const cartSlice = createSlice({
@@ -27,9 +32,13 @@ export const cartSlice = createSlice({
 				count: p.id === action.payload.id ? action.payload.count : p.count,
 			}));
 		},
+		setSuccessOrderModal: (state, { payload }: PayloadAction<CartState['successOrderModal']>) => {
+			state.successOrderModal = payload;
+		}
 	},
 	selectors: {
 		getCartProducts: (state: CartState) => state.products,
+		getSuccessOrder: (state: CartState) => state.successOrderModal,
 	},
 });
 
